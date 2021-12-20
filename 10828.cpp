@@ -6,22 +6,27 @@ using namespace std;
 
 int main()
 {
+	ios::sync_with_stdio(false);
 	stack<int> sta;
 	int t;
 	cin >> t;
 	string cmd;
 	while (t--)
 	{
-		getline(cin, cmd, '\n');
+		cin >> cmd;
 		if (cmd == "push")
 		{
 			int number;
 			cin >> number;
 			sta.push(number);
-			cin.ignore();
 		}
 		else if (cmd == "top")
 		{
+			if (sta.empty())
+			{
+				cout << "-1\n";
+				continue;
+			}
 			cout << sta.top() << "\n";
 		}
 		else if (cmd == "empty")
@@ -34,8 +39,15 @@ int main()
 		}
 		else if (cmd == "pop")
 		{
-			cout << sta.top() <<"\n";
-			sta.pop();
+			if (sta.empty())
+			{
+				cout << "-1\n";
+			}
+			else {
+				cout << sta.top() << "\n";
+				sta.pop();
+			}
+			
 		}
 	}
 }
