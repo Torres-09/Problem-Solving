@@ -1,4 +1,5 @@
 #include<iostream>
+#include<string>
 #include<stack>
 using namespace std;
 
@@ -9,23 +10,20 @@ int main()
 
 	while (t--)
 	{
-		char c;
+		string arr;
 		stack<char> sta;
 
-		while (true)
+		cin >> arr;
+		for (int i = 0; i < arr.size(); i++)
 		{
-			cin >> c;
-
-			if (c == '\n')
-				break;
-			else
-				sta.push(c);
+			sta.push(arr[i]);
 		}
 
 		int check = 0;
+		int stop = 0;
 		while (!sta.empty())
 		{
-			if (sta.top() == '(')
+			if (sta.top() == ')')
 			{
 				check++;
 				sta.pop();
@@ -35,9 +33,15 @@ int main()
 				check--;
 				sta.pop();
 			}
+
+			if (check < 0)
+			{
+				stop++;
+				break;
+			}
 		}
 
-		if (check == 0)
+		if (check == 0&&check==0)
 			cout << "YES\n";
 		else
 			cout << "NO\n";
