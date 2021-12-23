@@ -48,8 +48,10 @@ int main()
 			
 		}
 
-		if (sta.top()=='1' && flag == true)
+		if (sta.top() == '1' && flag == true)
 			cout << "yes\n";
+		else if(flag != false)
+			cout << "no\n";
 	}
 
 }
