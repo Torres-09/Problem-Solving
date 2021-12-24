@@ -18,9 +18,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="4949.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="1002.cpp">
       <Filter>소스 파일\Pass</Filter>
     </ClCompile>
@@ -308,6 +305,12 @@
     </ClCompile>
     <ClCompile Include="소스.cpp">
       <Filter>소스 파일\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="4949.cpp">
+      <Filter>소스 파일\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="1874.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
