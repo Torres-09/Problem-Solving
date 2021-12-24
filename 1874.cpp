@@ -1,33 +1,45 @@
 #include<iostream>
-#include<stack>
-#include<algorithm>
+#include<vector>
+#include<string>
 using namespace std;
 
 int main()
 {
 	int n;
 	cin >> n;
-	stack<int> ori;
-	stack<int> sta;
-	bool *check = new bool[n+1];
-	check[0] = true;
-
 	
-	for (int i = n; i > 0; i--)
+	int *seq = new int[n + 1];
+	vector<int>v;
+	string result = "";
+	for (int i = 1; i < n + 1; i++)
 	{
-		check[i] = false;
+		cin >> seq[i];
 	}
 
+
+	int j = 1;
 	for (int i = 1; i <= n; i++)
 	{
-		ori.push(i);
+		v.push_back(i);
+		result += "+";
+
+		while (!v.empty() && v.back() == seq[j])
+		{
+			v.pop_back();
+			result += "-";
+			j++;
+		}
 	}
 
-	int number;
-	for (int i = 1; i <= n; i++)
+	if (j == n + 1)
 	{
-		cin >> number;
-		
+		for (int i = 0; i < result.size(); i++)
+		{
+			cout << result[i] << "\n";
+		}
 	}
-
+	else
+	{
+		cout << "NO\n";
+	}
 }
