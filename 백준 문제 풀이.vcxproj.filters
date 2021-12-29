@@ -312,28 +312,31 @@
     <ClCompile Include="1874.cpp">
       <Filter>소스 파일\Pass</Filter>
     </ClCompile>
-    <ClCompile Include="17298.cpp">
+    <ClCompile Include="5430.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="18258.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="2164.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="11866.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="1966.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Pass</Filter>
     </ClCompile>
     <ClCompile Include="10866.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="11866.cpp">
+      <Filter>소스 파일\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="17298.cpp">
+      <Filter>소스 파일\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="2164.cpp">
+      <Filter>소스 파일\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="1966.cpp">
+      <Filter>소스 파일\Pass</Filter>
     </ClCompile>
     <ClCompile Include="1021.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Pass</Filter>
     </ClCompile>
-    <ClCompile Include="5430.cpp">
+    <ClCompile Include="2630.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
