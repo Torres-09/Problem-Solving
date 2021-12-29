@@ -40,6 +40,8 @@ paperinfo solution(int x,int y, int size)
 	if (result.white == 0)
 		result.blue = 1;
 
+
+
 	return result;
 }
 
