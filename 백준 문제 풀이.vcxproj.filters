@@ -333,12 +333,6 @@
     <ClCompile Include="1021.cpp">
       <Filter>소스 파일\Pass</Filter>
     </ClCompile>
-    <ClCompile Include="1780.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="1629.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="1992.cpp">
       <Filter>소스 파일\Pass</Filter>
     </ClCompile>
@@ -348,7 +342,22 @@
     <ClCompile Include="5430.cpp">
       <Filter>소스 파일\Pass</Filter>
     </ClCompile>
+    <ClCompile Include="10830.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="11401.cpp">
+      <Filter>소스 파일\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="2740.cpp">
+      <Filter>소스 파일\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="1780.cpp">
+      <Filter>소스 파일\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="1629.cpp">
+      <Filter>소스 파일\Pass</Filter>
+    </ClCompile>
+    <ClCompile Include="11444.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
