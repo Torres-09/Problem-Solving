@@ -1,39 +1,40 @@
 #include<iostream>
 #include<vector>
-
+#include<algorithm>
 using namespace std;
-vector <vector<int>> v;
+vector<int> v[501];
+
+int n;
+
+void solution()
+{
+	for (int i = n; i >= 2; i--)
+	{
+		for (int j = 0; j < i - 1; j++)
+		{
+			v[i - 1][j] += max(v[i][j], v[i][j + 1]);
+		}
+	}
+}
 
 int main()
 {
-	
-	int N;
-	cin >> N;
-	for (int i = 0; i <= N; i++)
-	{
-		vector<int> v2(i);
-		v.push_back(v2);
-	}
-	for (int i = 1; i <= N; i++)
-	{
-		for (int j = 0; j < i; j++)
-		{
-			int k;
-			cin >> k;
-			v[i].push_back(k);
-		}
-	}
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
 
-	int result = 0;
-	int result_temp = 0;
-	int sum = 0;
-	for (int i = 1; i <= N; i++)
+	
+	int number;
+	cin >> n;
+
+	for (int i = 1; i <= n; i++)
 	{
 		for (int j = 0; j < i; j++)
 		{
-			cout << v[i][0] << " ";
+			cin >> number;
+			v[i].push_back(number);
 		}
-		cout << "\n";
 	}
-	system("pause");
+	solution();
+	cout << v[1][0] << "\n";
 }
