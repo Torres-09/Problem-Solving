@@ -1,46 +1,46 @@
+// 구간트리, 세그먼트 트리
 #include<iostream>
-#include<vector>
 #include<algorithm>
 using namespace std;
 int n, m;
 int v[100001];
-int mintree[500000];
-int maxtree[500000];
+int mintree[400010];
+int maxtree[400010];
 
-int init(int start, int end, int node)
+int min_segment_tree(int start, int end, int node)
 {
-	if (start == end) 
+	if (start == end)
 		return mintree[node] = v[start];
 
 	int mid = (start + end) / 2;
 
-	return mintree[node] = min(init(start, mid, node * 2), init(mid + 1, end, node * 2 + 1));
+	return mintree[node] = min(min_segment_tree(start, mid, node * 2), min_segment_tree(mid + 1, end, node * 2 + 1));
 }
 
-int maxinit(int start, int end, int node)
+int max_segment_tree(int start, int end, int node)
 {
 	if (start == end)
 		return maxtree[node] = v[start];
 
 	int mid = (start + end) / 2;
 
-	return maxtree[node] = max(maxinit(start, mid, node * 2), maxinit(mid + 1, end, node * 2 + 1));
+	return maxtree[node] = max(max_segment_tree(start, mid, node * 2), max_segment_tree(mid + 1, end, node * 2 + 1));
 }
 
-int findmin(int start, int end, int node, int left, int right)
+int find_min(int start, int end, int node, int left, int right)
 {
 	if (left > end || right < start)
-		return 1000000000;
+		return INT_MAX;
 
 	if (left <= start && end <= right)
 		return mintree[node];
 
 	int mid = (start + end) / 2;
 
-	return min(findmin(start, mid, node * 2, left, right), findmin(mid + 1, end, node * 2 + 1, left, right));
+	return min(find_min(start, mid, node * 2, left, right), find_min(mid + 1, end, node * 2 + 1, left, right));
 }
 
-int findmax(int start, int end, int node, int left, int right)
+int find_max(int start, int end, int node, int left, int right)
 {
 	if (left > end || right < start)
 		return 0;
@@ -50,7 +50,7 @@ int findmax(int start, int end, int node, int left, int right)
 
 	int mid = (start + end) / 2;
 
-	return max(findmax(start, mid, node * 2, left, right), findmax(mid + 1, end, node * 2 + 1, left, right));
+	return max(find_max(start, mid, node * 2, left, right), find_max(mid + 1, end, node * 2 + 1, left, right));
 }
 
 int main()
@@ -61,25 +61,26 @@ int main()
 
 	for (int i = 0; i < 500000; i++)
 	{
-		mintree[i] = 1000000000;
+		mintree[i] = INT_MAX;
 		maxtree[i] = 0;
 	}
 
 	cin >> n >> m;
+
 	for (int i = 1; i <= n; i++)
 	{
 		cin >> v[i];
 	}
 
-	init(1, n, 1);
-	maxinit(1, n, 1);
+	min_segment_tree(1, n, 1);
+	max_segment_tree(1, n, 1);
 
 	int a, b;
 
 	for(int i =0;i<m;i++)
 	{
 		cin >> a >> b;
-		cout << findmin(1, n, 1, a, b) << " " << findmax(1,n,1,a,b);
+		cout << find_min(1, n, 1, a, b) << " " << find_max(1,n,1,a,b);
 		cout << "\n";
 	}
 }
