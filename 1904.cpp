@@ -1,22 +1,22 @@
 #include<iostream>
-#include<vector>
-#include<set>
-#include<string>
 using namespace std;
-set<string> s[1000000];
+int dp[1000002];
+int n;
 
-void add()
+void solve()
 {
-	
+	for (int i = 3; i < 1000001; i++)
+	{
+		dp[i] = (dp[i - 1] % 15746 + dp[i - 2] % 15746)%15746;
+	}
+
+	cin >> n;
+	cout << dp[n];
 }
 
 int main()
 {
-	ios::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
-
-	int n;
-	cin >> n;
-
+	dp[1] = 1;
+	dp[2] = 2;
+	solve();
 }
