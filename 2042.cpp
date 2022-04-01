@@ -29,7 +29,7 @@ long long int find_sum(int start, int end, int node, int left, int right)
 	return find_sum(start, mid, node * 2, left, right) + find_sum(mid + 1, end, node * 2 + 1, left, right);
 }
 
-void updata(int start, int end, int node, int index, long long int diff)
+void update(int start, int end, int node, int index, long long int diff)
 {
 	if (index < start || index > end) return;
 
@@ -37,8 +37,8 @@ void updata(int start, int end, int node, int index, long long int diff)
 	if (start == end)return;
 	int mid = (start + end) / 2;
 	
-	updata(start, mid, node * 2, index, diff);
-	updata(mid + 1, end, node * 2 + 1, index, diff);
+	update(start, mid, node * 2, index, diff);
+	update(mid + 1, end, node * 2 + 1, index, diff);
 }
 
 int main()
@@ -66,7 +66,7 @@ int main()
 		{
 			diff = c - tree[b];
 			tree[b] = c;
-			updata(1, n, 1, b, diff);
+			update(1, n, 1, b, diff);
 		}
 		else if (a == 2)
 			cout << find_sum(1, n, 1, b, c) << "\n";
