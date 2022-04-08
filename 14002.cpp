@@ -1,30 +1,55 @@
 #include<bits/stdc++.h>
 using namespace std;
-vector<int> v;
+int n;
+int cnt = 0;
 int a[1001];
+int dp[1001];
+vector<int> v;
+stack<int> ans;
 
 void solve()
 {
-	int n;
 	cin >> n;
 
-	v.push_back(INT_MIN);
-	for (int i = 0; i < n; i++)
+	for (int i = 1; i <= n; i++)
 	{
 		cin >> a[i];
-		if (v.back() < a[i])
+	}
+
+	v.push_back(a[1]);
+
+	for (int i = 1; i <= n; i++)
+	{
+		if (v[cnt] < a[i])
+		{
 			v.push_back(a[i]);
+			cnt++;
+			dp[i] = cnt;
+		}
 		else
 		{
-			auto iter = lower_bound(v.begin(), v.end(), a[i]);
-			*iter = a[i];
+			int pos = lower_bound(v.begin(), v.end(), a[i]) - v.begin();
+			v[pos] = a[i];
+			dp[i] = pos;
 		}
 	}
 
-	cout << v.size() - 1 << "\n";
-	for (int i = 0; i < v.size() - 1; i++)
+	int seq_size = cnt;
+
+	for (int i = n; i >= 0; i--)
 	{
-		cout << v[i] << " ";
+		if (dp[i] == seq_size)
+		{
+			ans.push(a[i]);
+			seq_size--;
+		}
+	}
+
+	cout << ans.size() << "\n";
+	while (!ans.empty())
+	{
+		cout << ans.top() << " ";
+		ans.pop();
 	}
 }
 
