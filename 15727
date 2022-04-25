@@ -1,0 +1,15 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int a;
+    cin >> a;
+    int temp;
+    if(a%5==0)
+        temp = 0;
+    else
+        temp = 1;
+    
+    cout << a/5 + temp;
+}    
