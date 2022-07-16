@@ -4,7 +4,7 @@
 #include<algorithm>
 using namespace std;
 int n, m, k;
-priority_queue<pair<int, int>, vector<pair<int, int>>> pq;
+priority_queue<pair<int, int>, vector<pair<int, int>>,greater<pair<int,int>>> pq;
 priority_queue<int,vector<int>, less<int>> Visited[1001];
 vector<pair<int, int>> graph[1001];
 
