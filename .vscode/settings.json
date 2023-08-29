@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "string": "cpp",
+        "__bit_reference": "cpp",
+        "queue": "cpp",
+        "stack": "cpp"
+    }
+}
