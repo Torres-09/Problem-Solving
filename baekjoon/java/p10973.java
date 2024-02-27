@@ -5,37 +5,34 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class p10972 {
+public class p10973 {
     static int N;
     static int[] arr;
 
-    public static void swap(int left, int right) {
-        // Swap the data
-        int temp = arr[left];
-        arr[left] = arr[right];
-        arr[right] = temp;
+    static void swap(int a, int b) {
+        int temp = arr[a];
+        arr[a] = arr[b];
+        arr[b] = temp;
     }
 
-    public static void reverse(int left, int right) {
-
-        while (left < right) {
-            int temp = arr[left];
-            arr[left++] = arr[right];
-            arr[right--] = temp;
+    static void reverse(int first, int last) {
+        while (first <= last) {
+            swap(first, last);
+            first++;
+            last--;
         }
     }
 
-    public static boolean findNextPermutation() {
-
+    static boolean findPrevPermutation() {
         if (arr.length <= 1) return false;
         int last = arr.length - 2;
-        while (last >= 0 && arr[last] >= arr[last+1]) last--;
+        while (last >= 0 && arr[last] <= arr[last + 1]) last--;
         if (last < 0) return false;
 
         int nextGreater = arr.length - 1;
-        while (arr[last] >= arr[nextGreater]) nextGreater--;
+        while (arr[last] <= arr[nextGreater]) nextGreater--;
 
-        swap(nextGreater, last);
+        swap(last, nextGreater);
         reverse(last + 1, arr.length - 1);
         return true;
     }
@@ -43,13 +40,12 @@ public class p10972 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
-        arr = new int[N];
         StringTokenizer st = new StringTokenizer(br.readLine());
+        arr = new int[N];
         for (int i = 0; i < N; i++) {
             arr[i] = Integer.parseInt(st.nextToken());
         }
-
-        if (findNextPermutation()) {
+        if (findPrevPermutation()) {
             for (int i : arr) {
                 System.out.print(i + " ");
             }
