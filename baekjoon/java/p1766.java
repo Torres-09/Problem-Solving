@@ -11,10 +11,9 @@ public class p1766 {
     static int N, M;
     static int[] count;
     static ArrayList<Integer>[] arr;
-    static PriorityQueue<int[]> pq;
+    static PriorityQueue<Integer> pq;
     static int cnt;
     static StringBuilder answer = new StringBuilder();
-    static boolean[] visit;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -23,18 +22,11 @@ public class p1766 {
         M = Integer.parseInt(st.nextToken());
         count = new int[N + 1];
         arr = new ArrayList[N + 1];
-        visit = new boolean[N + 1];
         for (int i = 0; i <= N; i++) {
             arr[i] = new ArrayList<>();
         }
 
-        pq = new PriorityQueue<>((o1, o2) -> {
-            if (o2[1] != o1[1]) {
-                return Integer.compare(o1[1], o2[1]);
-            } else {
-                return Integer.compare(o1[0], o2[0]);
-            }
-        });
+        pq = new PriorityQueue<>();
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
@@ -46,22 +38,20 @@ public class p1766 {
 
         for (int i = 1; i <= N; i++) {
             if (count[i] == 0) {
-                pq.add(new int[]{i, count[i]});
+                pq.add(i);
             }
         }
 
         while (!pq.isEmpty()) {
-            int[] problem = pq.poll();
-            int num = problem[0];
-            if (visit[num]) continue;
-            visit[num] = true;
+            int problem = pq.poll();
             cnt++;
 
-            answer.append(String.format("%d ", num));
-            for (int i = 0; i < arr[num].size(); i++) {
-                if (visit[arr[num].get(i)]) continue;
-                count[arr[num].get(i)]--;
-                pq.add(new int[]{arr[num].get(i), count[arr[num].get(i)]});
+            answer.append(String.format("%d ", problem));
+            for (int i = 0; i < arr[problem].size(); i++) {
+                count[arr[problem].get(i)]--;
+                if (count[arr[problem].get(i)] == 0) {
+                    pq.add(arr[problem].get(i));
+                }
             }
         }
         System.out.println(answer.toString().trim());
