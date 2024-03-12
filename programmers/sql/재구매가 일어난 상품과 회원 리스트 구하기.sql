@@ -9,4 +9,4 @@ SELECT user_id, product_id
 from online_sale as o
 group by user_id, product_id
 having count(online_sale_id) >= 2
-order by o.user_id , o.product_id desc;
+order by o.user_id, o.product_id desc;
