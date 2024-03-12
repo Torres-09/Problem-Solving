@@ -38,3 +38,5 @@ public class p1439 {
         System.out.println(Math.min(countZero, countOne));
     }
 }
+
+// https://www.acmicpc.net/problem/1439

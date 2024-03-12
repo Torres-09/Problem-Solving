@@ -1,8 +1,7 @@
 package com.baekjoon.java;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.io.*;
 
 /*
 1. summary
@@ -14,7 +13,7 @@ import java.util.StringTokenizer;
 */
 public class BOJ17143 {
 
-    static public class Shark {
+    static class Shark {
         int r, c, s, d, z;
 
         public Shark(int r, int c, int s, int d, int z) {
@@ -27,10 +26,10 @@ public class BOJ17143 {
     }
 
     // 1 : 위, 2: 아래, 3: 오른쪽, 4 : 왼쪽
-    static int dir[][] = {{0, 0}, {-1, 0}, {1, 0}, {0, 1}, {0, -1}};
+    static int[][] dir = {{0, 0}, {-1, 0}, {1, 0}, {0, 1}, {0, -1}};
 
     static int R, C, M, board[][];
-    static Shark sharkList[];
+    static Shark[] sharkList;
 
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

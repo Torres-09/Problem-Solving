@@ -1,11 +1,7 @@
 package com.baekjoon.java;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.io.*;
 
 public class p1049 {
     static int N, M;
@@ -41,3 +37,5 @@ public class p1049 {
         System.out.println(answer);
     }
 }
+
+// https://www.acmicpc.net/problem/1049

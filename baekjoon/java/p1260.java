@@ -71,3 +71,5 @@ public class p1260 {
         BFS(v);
     }
 }
+
+// https://www.acmicpc.net/problem/1260

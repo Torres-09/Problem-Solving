@@ -45,8 +45,8 @@ public class p1261 {
                 int nextX = x + dir[i][0];
                 int nextY = y + dir[i][1];
 
-                if(nextX < 0 || nextY < 0 || nextX >= N || nextY >= M) continue;
-                if(visit[nextX][nextY]) continue;
+                if (nextX < 0 || nextY < 0 || nextX >= N || nextY >= M) continue;
+                if (visit[nextX][nextY]) continue;
 
                 if (graph[nextX][nextY] == 1) {
                     pq.add(new int[]{nextX, nextY, count + 1});
@@ -58,3 +58,5 @@ public class p1261 {
         }
     }
 }
+
+// https://www.acmicpc.net/problem/1261

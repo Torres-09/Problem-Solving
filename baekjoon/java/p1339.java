@@ -40,3 +40,5 @@ public class p1339 {
 		System.out.println(sum);
 	}
 }
+
+// https://www.acmicpc.net/problem/1339

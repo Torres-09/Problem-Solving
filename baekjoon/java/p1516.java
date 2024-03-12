@@ -48,14 +48,6 @@ public class p1516 {
                 pq.add(new int[]{i, count[i]});
             }
         }
-/*
-4
-1 4 3 2 -1
-2 4 -1
-1 4 -1
-1 -1
- */
-
         while (!pq.isEmpty()) {
             int[] building = pq.poll();
             int buildNum = building[0];
@@ -75,3 +67,5 @@ public class p1516 {
         }
     }
 }
+
+// https://www.acmicpc.net/problem/1516

@@ -22,3 +22,5 @@ public class p1074 {
         else return (int) (Math.pow(half, 2) * 3 + solve(n - 1, r, c));
     }
 }
+
+// https://www.acmicpc.net/problem/1074
