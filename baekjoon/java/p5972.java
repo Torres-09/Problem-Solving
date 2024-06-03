@@ -46,7 +46,6 @@ public class p5972 {
             int cost = pq.peek()[1];
             pq.poll();
 
-
             for (int i = 0; i < adjList[now].size(); i++) {
                 int next = adjList[now].get(i)[0];
                 int nextCost = adjList[now].get(i)[1];

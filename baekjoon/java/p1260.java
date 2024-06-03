@@ -5,6 +5,7 @@ import java.util.*;
 public class p1260 {
     static ArrayList<Integer>[] graph;
     static Queue<Integer> q;
+    static Stack<Integer> s;
     static boolean[] visit;
     static int n, m, v;
 
@@ -19,6 +20,24 @@ public class p1260 {
             }
         }
     }
+    static void DFSv2(int start) {
+        visit[start] = true;
+        s.add(start);
+        System.out.print(start + " ");
+
+        while (!s.isEmpty()) {
+            start = q.poll();
+            for (int i = 0; i < graph[start].size(); i++) {
+                int next = graph[start].get(i);
+                if (!visit[next]) {
+                    s.add(next);
+                    System.out.print(next + " ");
+                    visit[next] = true;
+                }
+            }
+        }
+    }
+
 
     static void BFS(int start) {
         visit[start] = true;
@@ -63,7 +82,8 @@ public class p1260 {
             Collections.sort(graph[i]);
         }
 
-        q = new LinkedList<>();
+        q = new ArrayDeque<>();
+        s = new Stack<>();
         DFS(v);
         System.out.println();
 

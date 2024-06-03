@@ -3,49 +3,38 @@ package com.baekjoon.java;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class p1238 {
-    static class Node{
-        int vertex;
-        int cost;
-        Node next;
-
-        Node(int vertex, int cost, Node next) {
-            this.vertex = vertex;
-            this.cost = cost;
-            this.next = next;
-        }
-    }
-
     static int N,M, X;
-    static Node[] adjList;
-    static Node[] reverseAdjList;
+    static ArrayList<int[]>[] adjList;
+    static ArrayList<int[]>[] reverseAdjList;
     static int[] dist;
     static int[] reverseDist;
     static int answer;
 
-    static int[] dijkstra(Node[] adjList, int[] dist) {
+    static int[] dijkstra(ArrayList<int[]>[] adjList, int[] dist) {
         dist = new int[N + 1];
         Arrays.fill(dist, 100_000_000);
         dist[X] = 0;
-        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(o1->o1.cost));
-        pq.add(new Node(X, 0, null));
+        PriorityQueue<int[]> pq = new PriorityQueue<>(Comparator.comparingInt(o1->o1[1]));
+        pq.add(new int[]{X, 0});
 
         while (!pq.isEmpty()) {
-            Node now = pq.poll();
-            int nowVertex = now.vertex;
+            int[] now = pq.poll();
+            int nowVertex = now[0];
 
-            for (Node temp = adjList[nowVertex]; temp != null; temp = temp.next) {
-                int nextVertex = temp.vertex;
-                int cost = temp.cost;
+            for (int i = 0; i < adjList[nowVertex].size(); i++) {
+                int nextVertex = adjList[nowVertex].get(i)[0];
+                int cost = adjList[nowVertex].get(i)[1];
 
                 if (dist[nextVertex] > dist[nowVertex] + cost) {
                     dist[nextVertex] = dist[nowVertex] + cost;
-                    pq.add(new Node(nextVertex, dist[nextVertex], null));
+                    pq.add(new int[] {nextVertex, dist[nextVertex]});
                 }
             }
         }
@@ -58,10 +47,15 @@ public class p1238 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
         X = Integer.parseInt(st.nextToken());
-        adjList = new Node[N + 1];
-        reverseAdjList = new Node[N + 1];
+        adjList = new ArrayList[N+1];
+        reverseAdjList = new ArrayList[N+1];
         dist = new int[N + 1];
         reverseDist = new int[N + 1];
+
+        for (int i = 0; i <= N; i++) {
+            adjList[i] = new ArrayList<>();
+            reverseAdjList[i] = new ArrayList<>();
+        }
 
         for (int i = 0; i < M; i++) {
             st = new StringTokenizer(br.readLine());
@@ -69,8 +63,8 @@ public class p1238 {
             int end = Integer.parseInt(st.nextToken());
             int cost = Integer.parseInt(st.nextToken());
 
-            adjList[start] = new Node(end, cost, adjList[start]);
-            reverseAdjList[end] = new Node(start, cost, reverseAdjList[end]);
+            adjList[start].add(new int[] {end, cost});
+            reverseAdjList[end].add(new int[] {start, cost});
         }
 
         dist = dijkstra(adjList, dist);

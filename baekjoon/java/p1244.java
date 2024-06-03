@@ -12,7 +12,6 @@ public class p1244 {
     static int swit[] = new int[102];
 
     public static void main(String[] args) {
-//        BufferedInputStream bufferedInputStream = new BufferedInputStream(System.in);
         Scanner sc = new Scanner(System.in);
 
         // 스위치 개수
